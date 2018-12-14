@@ -13,28 +13,32 @@ public class Day1 {
     public void run(String filename, boolean part1) {
         try (Stream<String> stream = Files.lines(Paths.get(filename))) {
 
-            if (part1) {
-                int frequency = stream.mapToInt(Integer::valueOf).sum();
-                System.out.println("Total frequency: " + frequency);
-                return;
-            }
-
-            int frequency = 0;
-            List<Integer> cache = new ArrayList<>();
-            List<Integer> frequencies = stream.map(Integer::valueOf).collect(Collectors.toList());
-
-            while (true) {
-                for (int freq : frequencies) {
-                    frequency += freq;
-                    if (cache.contains(frequency)) {
-                        System.out.println("Frequency reached twice: " + frequency);
-                        return;
-                    } else cache.add(frequency);
-                }
-            }
+            if (part1) part1(stream);
+            else part2(stream);
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void part1(Stream<String> stream) {
+        int frequency = stream.mapToInt(Integer::valueOf).sum();
+        System.out.println("Total frequency: " + frequency);
+    }
+
+    private void part2(Stream<String> stream) {
+        int frequency = 0;
+        List<Integer> cache = new ArrayList<>();
+        List<Integer> frequencies = stream.map(Integer::valueOf).collect(Collectors.toList());
+
+        while (true) {
+            for (int freq : frequencies) {
+                frequency += freq;
+                if (cache.contains(frequency)) {
+                    System.out.println("Frequency reached twice: " + frequency);
+                    return;
+                } else cache.add(frequency);
+            }
         }
     }
 }
