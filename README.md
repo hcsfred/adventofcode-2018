@@ -2,4 +2,4 @@
 A collection of solutions for the coding challenges provided by https://adventofcode.com/
 
 ### Index
-* [Day 1](src/main/java/glass/fred/advent2018)
+* [Day 1](src/main/java/glass/fred/advent2018/Day1.java)
