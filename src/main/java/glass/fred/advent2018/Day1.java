@@ -1,44 +1,45 @@
-package main.java.glass.fred.advent2018;
+package glass.fred.advent2018;
 
+import com.google.common.io.Resources;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Set;
 
 public class Day1 {
 
-    public void run(String filename, boolean part1) {
-        try (Stream<String> stream = Files.lines(Paths.get(filename))) {
+    public static void main(String args[]) throws IOException {
+        List<String> lines = read("day1.txt");
+        System.out.println(part1(lines));
+        System.out.println(part2(lines));
+    }
 
-            if (part1) part1(stream);
-            else part2(stream);
-
-        } catch (IOException e) {
-            e.printStackTrace();
+    private static List<String> read(String file) throws IOException {
+        try {
+            return Files.readAllLines(Paths.get(Resources.getResource(file).toURI()));
+        } catch (URISyntaxException e) {
+            throw new IOException(e);
         }
     }
 
-    private void part1(Stream<String> stream) {
-        int frequency = stream.mapToInt(Integer::valueOf).sum();
-        System.out.println("Total frequency: " + frequency);
+    private static int part1(List<String> lines) {
+        return lines.stream().mapToInt(Integer::valueOf).sum();
     }
 
-    private void part2(Stream<String> stream) {
+    private static int part2(List<String> lines) {
+        int[] frequencies = lines.stream().mapToInt(Integer::valueOf).toArray();
+        Set<Integer> seen = new HashSet<>();
+
         int frequency = 0;
-        List<Integer> cache = new ArrayList<>();
-        List<Integer> frequencies = stream.map(Integer::valueOf).collect(Collectors.toList());
+        int i = 0;
 
-        while (true) {
-            for (int freq : frequencies) {
-                frequency += freq;
-                if (cache.contains(frequency)) {
-                    System.out.println("Frequency reached twice: " + frequency);
-                    return;
-                } else cache.add(frequency);
-            }
-        }
+        do {
+            frequency += frequencies[i++ % frequencies.length]; // Repeats frequency list
+        } while(seen.add(frequency));
+
+        return frequency;
     }
 }
