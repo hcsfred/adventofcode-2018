@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Day1 {
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) throws IOException {
         List<String> lines = AdventHelper.getLines("day1.txt");
         System.out.println(part1(lines));
         System.out.println(part2(lines));

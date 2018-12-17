@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class Day2 {
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) throws IOException {
         List<String> ids = AdventHelper.getLines("day2.txt");
         System.out.println(part1(ids));
         System.out.println(part2(ids));
@@ -20,7 +20,6 @@ public class Day2 {
             char c = id.charAt(i);
             frequencies[c - 'a']++;
         }
-
         return frequencies;
     }
 
@@ -33,7 +32,6 @@ public class Day2 {
             if (IntStream.of(frequencies).anyMatch(i -> i == 2)) twice++;
             if (IntStream.of(frequencies).anyMatch(i -> i == 3)) thrice++;
         }
-
         return twice * thrice;
     }
 
@@ -47,7 +45,6 @@ public class Day2 {
                 index = i;
             }
         }
-
         return differences == 0 ? index : -1;
     }
 
