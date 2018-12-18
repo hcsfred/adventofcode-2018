@@ -69,7 +69,6 @@ public class Day3 {
         for (Claim claim : noConflict) {
             for (int i=0; i<claim.width; i++) {
                 for (int j = 0; j < claim.height; j++) {
-
                     SquareState state = fabric[claim.x + i][claim.y + j];
                     if (state == SquareState.COUNTED) continue outer;
                 }
