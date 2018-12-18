@@ -42,8 +42,8 @@ public class Day3 {
 
         for (String line : lines) {
             Claim claim = parse(line);
-            boolean conflict = false;
 
+            boolean conflict = false;
             for (int i=0; i<claim.width; i++) {
                 for (int j=0; j<claim.height; j++) {
 
@@ -59,7 +59,6 @@ public class Day3 {
                     if (state != SquareState.EMPTY) conflict = true;
                 }
             }
-
             if (!conflict) noConflict.add(claim);
         }
         return overlaps;
@@ -71,7 +70,7 @@ public class Day3 {
             for (int i=0; i<claim.width; i++) {
                 for (int j = 0; j < claim.height; j++) {
 
-                    SquareState state = fabric[claim.x +i][claim.y+j];
+                    SquareState state = fabric[claim.x + i][claim.y + j];
                     if (state == SquareState.COUNTED) continue outer;
                 }
             }
