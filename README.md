@@ -7,4 +7,4 @@ A collection of solutions for the coding challenges provided by https://adventof
 * [Day 3](src/main/java/glass/fred/advent2018/Day3.java)
 * [Day 4](src/main/java/glass/fred/advent2018/Day4.java)
 * [Day 5](src/main/java/glass/fred/advent2018/Day5.java)
-
+* [Day 6](src/main/java/glass/fred/advent2018/Day6.java)
