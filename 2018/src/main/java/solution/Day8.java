@@ -1,4 +1,4 @@
-package glass.fred.advent2018;
+package solution;
 
 import java.io.IOException;
 import java.util.*;
@@ -6,7 +6,7 @@ import java.util.*;
 public class Day8 {
 
     public static void main(String[] args) throws IOException {
-        String line = AdventHelper.getLines("2018/day8.txt").get(0);
+        String line = AdventHelper.getLines("day8.txt").get(0);
         List<Integer> list = parse(line);
         List<Integer> clone = new ArrayList<>(list);
 

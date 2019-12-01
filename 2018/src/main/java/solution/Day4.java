@@ -1,4 +1,4 @@
-package glass.fred.advent2018;
+package solution;
 
 import java.io.IOException;
 import java.util.*;
@@ -16,7 +16,7 @@ public class Day4 {
     }
 
     public static void main(String[] args) throws IOException {
-        List<String> lines = AdventHelper.getLines("2018/day4.txt");
+        List<String> lines = AdventHelper.getLines("day4.txt");
         System.out.println(part1(lines));
         System.out.println(part2());
     }

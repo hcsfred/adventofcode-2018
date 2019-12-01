@@ -3,15 +3,23 @@ An incomplete collection of solutions for the  challenges provided by [Advent of
 
 ### Index
 <details>
+    <summary>2019</summary>
+    <ul>
+        <li><a href="2019/src/main/kotlin/solution/Day1.kt">Day 1</a></li>
+    </ul>
+</details>
+
+<details>
     <summary>2018</summary>
-    
-    * [Day 1](src/main/java/glass/fred/advent2018/Day1.java)
-    * [Day 2](src/main/java/glass/fred/advent2018/Day2.java)
-    * [Day 3](src/main/java/glass/fred/advent2018/Day3.java)
-    * [Day 4](src/main/java/glass/fred/advent2018/Day4.java)
-    * [Day 5](src/main/java/glass/fred/advent2018/Day5.java)
-    * [Day 6](src/main/java/glass/fred/advent2018/Day6.java)
-    * [Day 7](src/main/java/glass/fred/advent2018/Day7.java)
-    * [Day 8](src/main/java/glass/fred/advent2018/Day8.java)
-    * [Day 9](src/main/java/glass/fred/advent2018/Day9.java)
+    <ul>
+        <li><a href="2018/src/main/java/solution/Day1.java">Day 1</a></li>
+        <li><a href="2018/src/main/java/solution/Day2.java">Day 2</a></li>
+        <li><a href="2018/src/main/java/solution/Day3.java">Day 3</a></li>
+        <li><a href="2018/src/main/java/solution/Day4.java">Day 4</a></li>
+        <li><a href="2018/src/main/java/solution/Day5.java">Day 5</a></li>
+        <li><a href="2018/src/main/java/solution/Day6.java">Day 6</a></li>
+        <li><a href="2018/src/main/java/solution/Day7.java">Day 7</a></li>
+        <li><a href="2018/src/main/java/solution/Day8.java">Day 8</a></li>
+        <li><a href="2018/src/main/java/solution/Day9.java">Day 9</a></li>
+    </ul>
 </details>

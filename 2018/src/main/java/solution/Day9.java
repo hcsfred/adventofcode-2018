@@ -1,4 +1,4 @@
-package glass.fred.advent2018;
+package solution;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -13,7 +13,7 @@ public class Day9 {
     private static int nMarbles = 0;
 
     public static void main(String[] args) throws IOException {
-        String line = AdventHelper.getLines("2018/day9.txt").get(0);
+        String line = AdventHelper.getLines("day9.txt").get(0);
         parse(line);
         System.out.println(play(false));
         System.out.println(play(true));

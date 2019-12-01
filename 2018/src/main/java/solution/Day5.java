@@ -1,11 +1,11 @@
-package glass.fred.advent2018;
+package solution;
 
 import java.io.IOException;
 
 public class Day5 {
 
     public static void main(String[] args) throws IOException {
-        String polymer = AdventHelper.getLines("2018/day5.txt").get(0);
+        String polymer = AdventHelper.getLines("day5.txt").get(0);
         System.out.println(part1(polymer));
         System.out.println(part2(polymer));
     }

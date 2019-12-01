@@ -1,4 +1,4 @@
-package glass.fred.advent2018;
+package solution;
 
 import com.google.common.io.Resources;
 import java.io.IOException;
