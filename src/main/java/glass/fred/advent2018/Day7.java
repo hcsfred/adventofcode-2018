@@ -8,7 +8,7 @@ public class Day7 {
     private static Set<Step> stepsClone;
 
     public static void main(String[] args) throws IOException {
-        List<String> lines = AdventHelper.getLines("day7.txt");
+        List<String> lines = AdventHelper.getLines("2018/day7.txt");
         System.out.println(part1(lines));
         System.out.println(part2());
     }

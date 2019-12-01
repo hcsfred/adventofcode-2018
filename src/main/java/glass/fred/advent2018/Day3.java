@@ -20,7 +20,7 @@ public class Day3 {
     }
 
     public static void main(String[] args) throws IOException {
-        List<String> lines = AdventHelper.getLines("day3.txt");
+        List<String> lines = AdventHelper.getLines("2018/day3.txt");
         System.out.println(part1(lines));
         System.out.println(part2());
     }

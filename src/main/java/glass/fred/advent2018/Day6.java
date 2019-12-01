@@ -6,7 +6,7 @@ import java.util.*;
 public class Day6 {
 
     public static void main(String[] args) throws IOException {
-        List<String> lines = AdventHelper.getLines("day6.txt");
+        List<String> lines = AdventHelper.getLines("2018/day6.txt");
         int[] solutions = parts(lines); // Parts 1 and 2 amalgamated to improve efficiency
         System.out.println(solutions[0] + "\n" + solutions[1]);
     }

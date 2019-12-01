@@ -13,7 +13,7 @@ public class Day9 {
     private static int nMarbles = 0;
 
     public static void main(String[] args) throws IOException {
-        String line = AdventHelper.getLines("day9.txt").get(0);
+        String line = AdventHelper.getLines("2018/day9.txt").get(0);
         parse(line);
         System.out.println(play(false));
         System.out.println(play(true));
@@ -30,20 +30,20 @@ public class Day9 {
         nMarbles = Integer.parseInt(m.group(0));
     }
 
-    private static Marble specialCase(int i, long[] players, int playerIndex, Marble current, Set<Integer> seen) {
-        players[playerIndex] += i;
+    private static Marble specialCase(int i, long[] players, int pIndex, Marble current, Set<Integer> seen) {
+        players[pIndex] += i;
 
         Marble other = current;
         for (int w=0; w<7; w++) other = other.prev; // 7 marbles counter-clockwise
-        players[playerIndex] += other.score;
+        players[pIndex] += other.score;
 
         // Remove
         Marble backup = other.next;
         Marble backup2 = other.prev;
         other.prev.next = backup;
         other.next.prev = backup2;
-        seen.add(i);
 
+        seen.add(i);
         return backup;
     }
 
@@ -68,7 +68,7 @@ public class Day9 {
         start.next = start;
 
         long[] players = new long[nPlayers];
-        int playerIndex = 0;
+        int pIndex = 0;
 
         for (int i=1; i< nMarbles +1;) {
 
@@ -79,12 +79,12 @@ public class Day9 {
 
             final int special = 23;
             if (i % special == 0)
-                current = specialCase(i, players, playerIndex, current, seen);
+                current = specialCase(i, players, pIndex, current, seen);
             else {
                 current = standardCase(i, current);
                 i++;
             }
-            playerIndex = Math.floorMod(++playerIndex, nPlayers);
+            pIndex = Math.floorMod(++pIndex, nPlayers);
         }
         return LongStream.of(players).max().orElse(-1);
     }
@@ -92,8 +92,7 @@ public class Day9 {
     private static class Marble {
         
         private final int score;
-        private Marble prev;
-        private Marble next;
+        private Marble prev, next;
 
         Marble(int score) {
             this.score = score;
