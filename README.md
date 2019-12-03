@@ -7,6 +7,7 @@ An incomplete collection of solutions for the  challenges provided by [Advent of
     <ul>
         <li><a href="2019/src/main/kotlin/solution/Day1.kt">Day 1</a></li>
         <li><a href="2019/src/main/kotlin/solution/Day2.kt">Day 2</a></li>
+        <li><a href="2019/src/main/kotlin/solution/Day3.kt">Day 3</a></li>
     </ul>
 </details>
 
