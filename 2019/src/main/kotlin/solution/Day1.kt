@@ -1,7 +1,7 @@
 package solution
 
 fun main() {
-    val masses = ClassLoader.getSystemResourceAsStream("day1.txt").bufferedReader().readLines().map { it.toInt() }
+    val masses = ClassLoader.getSystemResourceAsStream("day1.txt").bufferedReader().readLines().map(String::toInt)
     println(Day1.part1(masses))
     println(Day1.part2(masses))
 }

@@ -2,7 +2,7 @@ package solution
 
 fun main() {
     val line = ClassLoader.getSystemResourceAsStream("day2.txt").bufferedReader().readLine()
-    val program = line.split(",").map { it.toInt() }
+    val program = line.split(",").map(String::toInt)
     println(Day2.part1(ArrayList(program)))
     println(Day2.part2(ArrayList(program)))
 }
