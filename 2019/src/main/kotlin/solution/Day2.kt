@@ -13,30 +13,11 @@ const val PART_TWO_TARGET = 19690720
 object Day2 {
 
     fun part1(program: ArrayList<Int>): Int {
-        program.initMemory(12, 2)
-        return program.parse()
+        val computer = Computer(program)
+        computer.initMemory(12, 2)
+        return computer.parseProgram()
     }
 
-    private fun ArrayList<Int>.initMemory(noun: Int, verb: Int) {
-        set(1, noun)
-        set(2, verb)
-    }
-
-    private fun ArrayList<Int>.parse(): Int {
-        for (i in indices step INSTRUCTION_LENGTH) {
-            when (Opcode[get(i)]) {
-                Opcode.HALT -> return first()
-                Opcode.ADD -> executeInstruction(i, Int::plus)
-                Opcode.MULTIPLY -> executeInstruction(i, Int::times)
-            }
-        }
-        return -1
-    }
-
-    private fun ArrayList<Int>.executeInstruction(index: Int, operation: (Int, Int) -> Int) {
-        set(get(index + 3), operation(getForOffset(index + 1), getForOffset(index + 2)))
-    }
-    private fun ArrayList<Int>.getForOffset(offset: Int) = get(get(offset))
 
     fun part2(program: ArrayList<Int>): Int {
         val (noun, verb) = bruteforce(program)
@@ -47,15 +28,40 @@ object Day2 {
         val range = 0..99
         for (noun in range) {
             for (verb in range) {
-                val copy = ArrayList(program)
-                copy.initMemory(noun, verb)
-                if (copy.parse() == PART_TWO_TARGET) {
+                val computer = Computer(ArrayList(program))
+                computer.initMemory(noun, verb)
+                if (computer.parseProgram() == PART_TWO_TARGET) {
                     return noun to verb
                 }
             }
         }
         return -1 to -1
     }
+}
+
+class Computer(private val program: ArrayList<Int>) {
+
+    fun initMemory(noun: Int, verb: Int) {
+        program[1] = noun
+        program[2] = verb
+    }
+
+    fun parseProgram(): Int {
+        for (i in program.indices step INSTRUCTION_LENGTH) {
+            when (Opcode[program[i]]) {
+                Opcode.ADD -> executeInstruction(i, Int::plus)
+                Opcode.MULTIPLY -> executeInstruction(i, Int::times)
+                else -> return program.first()
+            }
+        }
+        return -1
+    }
+
+    private fun executeInstruction(index: Int, operation: (Int, Int) -> Int) {
+        program[program[index + 3]] = operation(program.getForOffset(index + 1), program.getForOffset(index + 2))
+    }
+
+    private fun ArrayList<Int>.getForOffset(offset: Int) = get(get(offset))
 }
 
 enum class Opcode(val value: Int) {

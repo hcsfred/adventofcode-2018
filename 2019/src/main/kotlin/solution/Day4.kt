@@ -6,13 +6,13 @@ fun main() {
     println(Day4.part2(input))
 }
 
+fun Int.toList() = toString().map { it - '0' }
+
 object Day4 {
 
     fun part1(range: IntRange) = range.filter { it.toList().isValid() }.size
 
     fun part2(range: IntRange) = range.filter { it.toList().isValid(part2 = true) }.size
-
-    private fun Int.toList() = toString().map(Char::toInt)
 
     private fun List<Int>.isValid(part2: Boolean = false): Boolean {
         var hasDoubleDigit = false
