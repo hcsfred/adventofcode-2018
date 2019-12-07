@@ -11,6 +11,7 @@ An incomplete collection of unpolished solutions for the  challenges provided by
         <li><a href="2019/src/main/kotlin/solution/Day4.kt">Day 4</a></li>
         <li><a href="2019/src/main/kotlin/solution/Day5.kt">Day 5</a></li>
         <li><a href="2019/src/main/kotlin/solution/Day6.kt">Day 6</a></li>
+        <li><a href="2019/src/main/kotlin/solution/Day7.kt">Day 7</a></li>
     </ul>
 </details>
 
