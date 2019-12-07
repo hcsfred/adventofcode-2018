@@ -1,5 +1,5 @@
 ## Advent of Code
-An incomplete collection of solutions for the  challenges provided by [Advent of Code](https://adventofcode.com/)
+An incomplete collection of unpolished solutions for the  challenges provided by [Advent of Code](https://adventofcode.com/)
 
 ### Index
 <details>
@@ -10,6 +10,7 @@ An incomplete collection of solutions for the  challenges provided by [Advent of
         <li><a href="2019/src/main/kotlin/solution/Day3.kt">Day 3</a></li>
         <li><a href="2019/src/main/kotlin/solution/Day4.kt">Day 4</a></li>
         <li><a href="2019/src/main/kotlin/solution/Day5.kt">Day 5</a></li>
+        <li><a href="2019/src/main/kotlin/solution/Day6.kt">Day 6</a></li>
     </ul>
 </details>
 
