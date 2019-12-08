@@ -6,7 +6,7 @@ fun main() {
     println(Day4.part2(input))
 }
 
-fun Int.toList() = toString().map { it - '0' }
+fun Int.toList() = toString().map(Character::getNumericValue)
 
 object Day4 {
 
