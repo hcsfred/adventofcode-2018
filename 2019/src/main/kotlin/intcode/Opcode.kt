@@ -9,6 +9,7 @@ enum class Opcode(val value: Int, val pointerSize: Int) {
     JUMP_IF_FALSE(6, 3),
     LESS_THAN(7, 4),
     EQUALS(8, 4),
+    RELATIVE(9, 2),
     HALT(99, 1);
 
     companion object {

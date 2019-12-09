@@ -1,59 +1,69 @@
 package intcode
 
 import solution.toList
+import java.util.*
+import kotlin.collections.ArrayList
 
-class Computer(val program: ArrayList<Int>, private val setting: Int = -1) { // TODO: heavy refactor required
+class Computer(val memory: ArrayList<Long>, private val setting: Long = -1) { // TODO: heavy refactor required
+
+    init {
+        val extension = ArrayList<Long>(Collections.nCopies(memory.size * 10, 0L)) // Increase available memory
+        memory.addAll(extension)
+    }
 
     var halted = false
-    private var diagnostic = -1
     private var pointer = 0
+    private var relativeBase = 0
+    private var diagnostic = -1L
     private var phaseSet = false
 
     fun initMemory(noun: Int, verb: Int) {
-        program[1] = noun
-        program[2] = verb
+        memory[1] = noun.toLong()
+        memory[2] = verb.toLong()
     }
 
-    fun runProgram(): Int {
+    fun runProgram(): Long {
         while (!halted) {
             runTest()
         }
         return diagnostic
     }
 
-    fun runTest(signal: Int = setting): Int {
-        while (!halted && pointer < program.size) {
-            val instruction = program[pointer]
-            val (opcode, modes) = readInstruction(instruction)
+    fun runTest(signal: Long = setting): Long {
+        while (!halted && pointer < memory.size) {
+            val instruction = memory[pointer]
+            val (opcode, modes) = readInstruction(instruction.toInt())
             val indices = getIndices(opcode, modes, pointer)
             pointer += opcode.pointerSize
 
             when (opcode) {
-                Opcode.ADD -> program[indices[2]] = program[indices[0]] + program[indices[1]]
+                Opcode.ADD -> memory[indices[2]] = memory[indices[0]] + memory[indices[1]]
 
-                Opcode.MULTIPLY -> program[indices[2]] = program[indices[0]] * program[indices[1]]
+                Opcode.MULTIPLY -> memory[indices[2]] = memory[indices[0]] * memory[indices[1]]
 
                 Opcode.INPUT -> {
-                    program[indices[0]] = if (!phaseSet) setting else signal
+                    memory[indices[0]] = if (!phaseSet) setting else signal
                     phaseSet = true
                 }
 
                 Opcode.OUTPUT -> {
-                    diagnostic = program[indices[0]]
+                    diagnostic = memory[indices[0]]
                     return diagnostic
                 }
 
-                Opcode.JUMP_IF_TRUE -> if (program[indices[0]] != 0) pointer = program[indices[1]]
+                Opcode.JUMP_IF_TRUE -> if (memory[indices[0]] != 0L) pointer = memory[indices[1]].toInt()
 
-                Opcode.JUMP_IF_FALSE -> if (program[indices[0]] == 0) pointer = program[indices[1]]
+                Opcode.JUMP_IF_FALSE -> if (memory[indices[0]] == 0L) pointer = memory[indices[1]].toInt()
 
                 Opcode.LESS_THAN -> {
-                    program[indices[2]] = if (program[indices[0]] < program[indices[1]]) 1 else 0
+                    memory[indices[2]] = if (memory[indices[0]] < memory[indices[1]]) 1 else 0
                 }
 
                 Opcode.EQUALS -> {
-                    program[indices[2]] = if (program[indices[0]] == program[indices[1]]) 1 else 0
+                    memory[indices[2]] = if (memory[indices[0]] == memory[indices[1]]) 1 else 0
                 }
+
+                Opcode.RELATIVE -> relativeBase += memory[indices[0]].toInt()
 
                 Opcode.HALT -> halted = true
             }
@@ -76,8 +86,9 @@ class Computer(val program: ArrayList<Int>, private val setting: Int = -1) { // 
         for (i in 1 until opcode.pointerSize) {
             val mode = ParameterMode[modes.getOrElse(i - 1) { 0 }]
             val index = when(mode) {
-                ParameterMode.POSITION -> program[pointer + i]
+                ParameterMode.POSITION -> memory[pointer + i].toInt()
                 ParameterMode.IMMEDIATE -> pointer + i
+                ParameterMode.RELATIVE -> memory[pointer + i].toInt() + relativeBase
             }
             indices.add(index)
         }

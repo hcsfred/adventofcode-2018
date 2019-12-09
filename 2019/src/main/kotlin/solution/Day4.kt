@@ -14,7 +14,7 @@ object Day4 {
 
     fun part2(range: IntRange) = range.filter { it.toList().isValid(part2 = true) }.size
 
-    private fun List<Int>.isValid(part2: Boolean = false): Boolean {
+    fun List<Int>.isValid(part2: Boolean = false): Boolean {
         var hasDoubleDigit = false
         loop@ for (i in 0 until size - 1) {
             val first = get(i)
