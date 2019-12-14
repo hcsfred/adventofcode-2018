@@ -30,6 +30,11 @@
             <artifactId>DiscreteMathToolkit</artifactId>
             <version>1.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.joml</groupId>
+            <artifactId>joml</artifactId>
+            <version>1.9.19</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -9,9 +9,10 @@ fun main() {
     println(Day2.part2(ArrayList(program)))
 }
 
-const val PART_TWO_TARGET = 19690720L
 
 object Day2 {
+
+    private const val PART_TWO_TARGET = 19690720L
 
     fun part1(program: ArrayList<Long>): Long {
         val computer = Computer(program)
