@@ -3,6 +3,13 @@ An incomplete collection of unpolished solutions for the  challenges provided by
 
 ### Index
 <details>
+    <summary>2020</summary>
+    <ul>
+        <li><a href="2020/src/main/kotlin/solution/Day1.kt">Day 1</a></li>
+    </ul>
+</details>
+
+<details>
     <summary>2019</summary>
     <ul>
         <li><a href="2019/src/main/kotlin/solution/Day1.kt">Day 1</a></li>
