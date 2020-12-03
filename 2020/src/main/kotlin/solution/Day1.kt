@@ -1,17 +1,13 @@
 package solution
 
-fun main() {
-    val entries = ClassLoader.getSystemResourceAsStream("day1.txt").bufferedReader().readLines().map(String::toInt)
-    println("part1 = ${Day1.part1(entries)}")
-    println("part2 = ${Day1.part2(entries)}")
-}
+import Day
 
-object Day1 {
+object Day1 : Day(1) {
 
     private const val TARGET_YEAR = 2020
 
-    fun part1(entries: List<Int>): Int {
-
+    override fun part1(input: List<String>): String {
+        val entries = input.map(String::toInt)
         var product = -1
 
         entries.loop2D { i, j ->
@@ -20,11 +16,11 @@ object Day1 {
             }
         }
 
-        return product
+        return product.toString()
     }
 
-    fun part2(entries: List<Int>): Int {
-
+    override fun part2(input: List<String>): String {
+        val entries = input.map(String::toInt)
         var product = -1
 
         entries.loop2D { i, j ->
@@ -37,7 +33,7 @@ object Day1 {
             }
         }
 
-        return product
+        return product.toString()
     }
 
     private fun List<Int>.loop2D(onLoop: (Int, Int) -> Unit) {

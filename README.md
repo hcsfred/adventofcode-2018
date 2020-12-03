@@ -6,6 +6,8 @@ An incomplete collection of unpolished solutions for the  challenges provided by
     <summary>2020</summary>
     <ul>
         <li><a href="2020/src/main/kotlin/solution/Day1.kt">Day 1</a></li>
+        <li><a href="2020/src/main/kotlin/solution/Day2.kt">Day 2</a></li>
+        <li><a href="2020/src/main/kotlin/solution/Day3.kt">Day 3</a></li>
     </ul>
 </details>
 

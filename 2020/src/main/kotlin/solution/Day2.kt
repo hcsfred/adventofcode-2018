@@ -1,19 +1,14 @@
 package solution
 
-fun main() {
-    val entries = ClassLoader.getSystemResourceAsStream("day2.txt").bufferedReader().readLines()
-    println("part1 = ${Day2.part1(entries)}")
-    println("part2 = ${Day2.part2(entries)}")
-}
+import Day
 
-
-object Day2 {
+object Day2 : Day(2) {
 
     private val REGEX = Regex("(\\d+)-(\\d+) (\\w): (\\w+)")
 
-    fun part1(entries: List<String>) = countValidPasswords(entries, policy = PreviousPasswordPolicy)
+    override fun part1(input: List<String>) = countValidPasswords(input, policy = PreviousPasswordPolicy).toString()
 
-    fun part2(entries: List<String>) = countValidPasswords(entries, policy = CurrentPasswordPolicy)
+    override fun part2(input: List<String>) = countValidPasswords(input, policy = CurrentPasswordPolicy).toString()
 
     private fun countValidPasswords(entries: List<String>, policy: PasswordPolicy): Int {
         return entries.filter { entry -> isValidPassword(entry, policy) }.count()
