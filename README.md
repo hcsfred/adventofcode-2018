@@ -1,4 +1,4 @@
-## Advent of Code
+## advent-of-code
 An incomplete collection of unpolished solutions for the  challenges provided by [Advent of Code](https://adventofcode.com/)
 
 ### Index
@@ -8,6 +8,7 @@ An incomplete collection of unpolished solutions for the  challenges provided by
         <li><a href="2020/src/main/kotlin/solution/Day1.kt">Day 1</a></li>
         <li><a href="2020/src/main/kotlin/solution/Day2.kt">Day 2</a></li>
         <li><a href="2020/src/main/kotlin/solution/Day3.kt">Day 3</a></li>
+        <li><a href="2020/src/main/kotlin/solution/Day4.kt">Day 4</a></li>
     </ul>
 </details>
 
