@@ -1,10 +1,7 @@
-import solution.Day1
-import solution.Day2
-import solution.Day3
-import solution.Day4
+import solution.*
 
 fun main() {
-    val days = listOf(Day1, Day2, Day3, Day4)
+    val days = listOf(Day1, Day2, Day3, Day4, Day5)
     days.forEach { day ->
         println("Day ${day.number}:")
         println("\tpart1 = ${day.part1(day.input)}")
