@@ -14,6 +14,7 @@ An incomplete collection of unpolished solutions for the  challenges provided by
         <li><a href="2020/src/main/kotlin/solution/Day7.kt">Day 7</a></li>
         <li><a href="2020/src/main/kotlin/solution/Day8.kt">Day 8</a></li>
         <li><a href="2020/src/main/kotlin/solution/Day9.kt">Day 9</a></li>
+        <li><a href="2020/src/main/kotlin/solution/Day10.kt">Day 10</a></li>
     </ul>
 </details>
 
