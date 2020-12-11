@@ -14,7 +14,7 @@ object Day10Test {
         "7", "9", "4", "2", "34", "10", "3"
     )
 
-        @Test
+    @Test
     fun `test part 1`() {
         Assertions.assertEquals("35", Day10.part1(SAMPLE_INPUT))
         Assertions.assertEquals("220", Day10.part1(SAMPLE_INPUT_2))
