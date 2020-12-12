@@ -20,6 +20,18 @@ object Day11 : Day(11) {
         return steadyState.values.count { it == SeatState.OCCUPIED }
     }
 
+    private fun getSeatLayout(input: List<String>): Map<Coord, SeatState> {
+        val layout = mutableMapOf<Coord, SeatState>()
+
+        input.forEachIndexed { i, row ->
+            row.forEachIndexed { j, key ->
+                layout[Coord(i, j)] = SeatState[key]
+            }
+        }
+
+        return layout
+    }
+
     private fun findSteadyState(seed: Map<Coord, SeatState>, strategy: SeatingStrategy): Map<Coord, SeatState> {
         var previousState = seed
 
@@ -38,18 +50,6 @@ object Day11 : Day(11) {
 
     private fun tick(layout: Map<Coord, SeatState>, strategy: SeatingStrategy): Map<Coord, SeatState> {
         return layout.map { it.key to strategy.getNextSeatState(layout, it.key, it.value) }.toMap()
-    }
-
-    private fun getSeatLayout(input: List<String>): Map<Coord, SeatState> {
-        val layout = mutableMapOf<Coord, SeatState>()
-
-        input.forEachIndexed { i, row ->
-            row.forEachIndexed { j, key ->
-                layout[Coord(i, j)] = SeatState[key]
-            }
-        }
-
-        return layout
     }
 }
 
@@ -70,7 +70,7 @@ interface SeatingStrategy {
 
     val requiredOccupied: Int
 
-    fun countOccupiedSeats(layout: Map<Coord, SeatState>, coord: Coord): Int
+    fun countOccupiedSeats(layout: Map<Coord, SeatState>, center: Coord): Int
 
     fun getNextSeatState(layout: Map<Coord, SeatState>, coord: Coord, seatState: SeatState): SeatState {
         val occupied = countOccupiedSeats(layout, coord)
@@ -91,12 +91,11 @@ object AdjacentSeatingStrategy : SeatingStrategy {
 
     override val requiredOccupied = 4
 
-    override fun countOccupiedSeats(layout: Map<Coord, SeatState>, coord: Coord): Int {
+    override fun countOccupiedSeats(layout: Map<Coord, SeatState>, center: Coord): Int {
         var occupied = 0
 
         getRange().forEach { (dx, dy) ->
-            val adjacent = layout[Coord(coord.x + dx, coord.y + dy)]
-
+            val adjacent = layout[Coord(center.x + dx, center.y + dy)]
             if (adjacent == SeatState.OCCUPIED) {
                 occupied++
             }
@@ -110,13 +109,12 @@ object LineOfSightSeatingStrategy : SeatingStrategy {
 
     override val requiredOccupied = 5
 
-    override fun countOccupiedSeats(layout: Map<Coord, SeatState>, coord: Coord): Int {
+    override fun countOccupiedSeats(layout: Map<Coord, SeatState>, center: Coord): Int {
         var occupied = 0
 
         getRange().forEach { (dx, dy) ->
-
-            var x = coord.x
-            var y = coord.y
+            var x = center.x
+            var y = center.y
             var los = SeatState.NA
 
             while (los == SeatState.NA) {
