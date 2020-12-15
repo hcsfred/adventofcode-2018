@@ -1,7 +1,7 @@
 import solution.*
 
 fun main() {
-    val days = listOf(Day1, Day2, Day3, Day4, Day5, Day6, Day7, Day8, Day9, Day10, Day11, Day12, Day13, Day14)
+    val days = listOf(Day1, Day2, Day3, Day4, Day5, Day6, Day7, Day8, Day9, Day10, Day11, Day12, Day13, Day14, Day15)
     days.forEach { day ->
         println("Day ${day.number}:")
         println("\tpart1 = ${day.part1(day.input)}")

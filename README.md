@@ -19,6 +19,7 @@ An incomplete collection of unpolished solutions for the  challenges provided by
         <li><a href="2020/src/main/kotlin/solution/Day12.kt">Day 12</a></li>
         <li><a href="2020/src/main/kotlin/solution/Day13.kt">Day 13</a></li>
         <li><a href="2020/src/main/kotlin/solution/Day14.kt">Day 14</a></li>
+        <li><a href="2020/src/main/kotlin/solution/Day15.kt">Day 15</a></li>
     </ul>
 </details>
 
